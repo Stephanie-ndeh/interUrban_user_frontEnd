@@ -21,5 +21,12 @@ export let routes = [
         beforeEnter: () => {
             // alert()
         }
+    },
+    {
+        name: 'booking',
+        path: 'src/views/booking.html',
+        beforeEnter: () => {
+            // alert()
+        }
     }
 ]

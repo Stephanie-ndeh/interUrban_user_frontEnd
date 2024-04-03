@@ -28,5 +28,20 @@ export let routes = [
         beforeEnter: () => {
             // alert()
         }
+    },
+    {
+        name: 'init_reservation',
+        path: 'src/views/reservationProcess/disposition.html',
+        beforeEnter: () => {
+            // alert()
+        }
+    },
+    {
+        name: 'pay_res',
+        path: 'src/parts/sections/disposition/paymentInfos.html',
+        beforeEnter: () => {
+            // alert()
+        }
     }
+
 ]

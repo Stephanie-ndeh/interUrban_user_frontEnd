@@ -715,6 +715,10 @@ video {
   grid-column: span 8 / span 8;
 }
 
+.col-span-9 {
+  grid-column: span 9 / span 9;
+}
+
 .float-start {
   float: inline-start;
 }
@@ -982,6 +986,10 @@ video {
   height: 17px;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-\[30px\] {
   height: 30px;
 }
@@ -1022,10 +1030,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[200px\] {
-  height: 200px;
 }
 
 .max-h-\[100px\] {
@@ -1112,6 +1116,10 @@ video {
   width: 17px;
 }
 
+.w-\[300px\] {
+  width: 300px;
+}
+
 .w-\[30px\] {
   width: 30px;
 }
@@ -1149,11 +1157,6 @@ video {
   width: 100vw;
 }
 
-.w-max {
-  width: -moz-max-content;
-  width: max-content;
-}
-
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -1180,18 +1183,6 @@ video {
 
 .min-w-full {
   min-width: 100%;
-}
-
-.min-w-\[\] {
-  min-width: ;
-}
-
-.min-w-\[200\] {
-  min-width: 200;
-}
-
-.min-w-\[200px\] {
-  min-width: 200px;
 }
 
 .max-w-\[100px\] {
@@ -1767,8 +1758,18 @@ video {
   gap: 0.5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-5 {
   gap: 1.25rem;
+}
+
+.space-x-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0px * var(--tw-space-x-reverse));
+  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
@@ -1823,12 +1824,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-}
-
-.space-x-0 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0px * var(--tw-space-x-reverse));
-  margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-y-reverse > :not([hidden]) ~ :not([hidden]) {
@@ -3157,6 +3152,11 @@ video {
   color: rgb(254 204 62 / var(--tw-text-opacity));
 }
 
+.text-danger-500 {
+  --tw-text-opacity: 1;
+  color: rgb(255 41 41 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -3205,6 +3205,10 @@ video {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .bg-blend-normal {
@@ -3607,6 +3611,19 @@ video {
   cursor: pointer;
 }
 
+.hover\:cursor-wait:hover {
+  cursor: wait;
+}
+
+.hover\:cursor-not-allowed:hover {
+  cursor: not-allowed;
+}
+
+.hover\:border-success-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(22 197 92 / var(--tw-border-opacity));
+}
+
 .hover\:border-yellow-600:hover {
   --tw-border-opacity: 1;
   border-color: rgb(254 204 62 / var(--tw-border-opacity));
@@ -3657,6 +3674,11 @@ video {
 .hover\:bg-slate-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-success-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(109 255 167 / var(--tw-bg-opacity));
 }
 
 .hover\:font-bold:hover {
@@ -3925,20 +3947,12 @@ video {
     height: auto;
   }
 
-  .lg\:h-\[\] {
-    height: ;
-  }
-
-  .lg\:h-\[200px\] {
-    height: 200px;
+  .lg\:h-screen {
+    height: 100vh;
   }
 
   .lg\:w-1\/2 {
     width: 50%;
-  }
-
-  .lg\:w-10\/12 {
-    width: 83.333333%;
   }
 
   .lg\:w-3\/12 {
@@ -3961,28 +3975,20 @@ video {
     width: 58.333333%;
   }
 
-  .lg\:w-auto {
-    width: auto;
-  }
-
   .lg\:w-8\/12 {
     width: 66.666667%;
-  }
-
-  .lg\:w-\[200px\] {
-    width: 200px;
   }
 
   .lg\:w-\[300px\] {
     width: 300px;
   }
 
-  .lg\:min-w-\[250px\] {
-    min-width: 250px;
+  .lg\:w-auto {
+    width: auto;
   }
 
-  .lg\:min-w-\[200px\] {
-    min-width: 200px;
+  .lg\:min-w-\[250px\] {
+    min-width: 250px;
   }
 
   .lg\:max-w-\[250px\] {
@@ -4023,6 +4029,12 @@ video {
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .lg\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -4033,12 +4045,6 @@ video {
     --tw-space-y-reverse: 0;
     margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
-  }
-
-  .lg\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1.25rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:border-0 {

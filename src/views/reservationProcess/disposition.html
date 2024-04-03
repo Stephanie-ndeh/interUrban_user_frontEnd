@@ -1,0 +1,110 @@
+<div class="flex">
+    <div class="grid lg:grid-cols-12  grid-cols-1 gap-2 lg:h-screen lg:w-8/12 m-auto">
+        <div class="col-span-9 my-auto">
+            <div class="bus_disposition grid grid-cols-2 gap-3 w-[300px]"></div>
+        </div>
+        <div class="col-span-3 my-auto space-y-5">
+            <a href="booking" to-sail-component="link" no-reload="" box="pageContent" color="secondary"
+                mode="stroke">Back to booking</a>
+            <div class="placesCount">
+                <div class="require" href="src/parts/sections/disposition/placesCount"></div>
+            </div>
+            <div class="paymentInfos hidden">
+
+                <div class="require" href="src/parts/sections/disposition/paymentInfos"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function errors() {
+        return document.querySelector('.errors')
+    }
+    function bus() {
+        return document.querySelector('.bus_disposition')
+    }
+    function nextButZone() {
+        return document.querySelector('.next-but-zone')
+    }
+    function finishButZone() {
+        return document.querySelector('.finish-but-zone')
+    }
+    function freePlaces() {
+        return [6, 14, 16, 17, 1, 5];
+    }
+    function selectedPlacesCount() {
+        return document.querySelectorAll('.bus_disposition .selected').length;
+    }
+    function phoneNumberInput() {
+        return document.querySelectorAll('.finish-box input').length;
+    }
+
+    nextButZone().addEventListener("click", (e) => {
+            e.preventDefault()
+            if (selectedPlacesCount() > 0) {
+                document.querySelector('.paymentInfos').classList.toggle('hidden');
+                document.querySelector('.placesCount').classList.toggle('hidden');
+
+            } else {
+                errors().classList.remove("hidden");
+            }
+    })
+
+    show_disposition()
+    function show_disposition() {
+        let placesNumbers = { left: { free: false, number: 0 }, right: { free: false, number: 0 } };
+        let placesCount = 0
+        for (let i = 0; i < 12; i++) {
+            placesNumbers.left = {
+                free: freePlaces().indexOf(placesCount) != -1 ? true : false,
+                number: placesCount
+            };
+            placesNumbers.right = {
+                free: freePlaces().indexOf(placesCount + 1) != -1 ? true : false,
+                number: placesCount + 1
+            };
+            bus().append(disposition(placesNumbers));
+            placesCount += 2
+
+        }
+    }
+    function disposition(placesDescription) {
+        let placeGroup = document.createElement('div');
+        placeGroup.setAttribute('class', 'flex space-x-2');
+        placeGroup.append(seat(placesDescription.left));
+        placeGroup.append(seat(placesDescription.right));
+        return placeGroup;
+    }
+    function seat(placeDescription) {
+        let place = document.createElement('div');
+        place.setAttribute('class', `rounded-lg hover:bg-success-100  w-[50px] h-[50px] flex ${placeDescription.free ? 'bg-secondary-600  hover:cursor-pointer' : 'bg-danger-200  hover:cursor-not-allowed'}`);
+        if (placeDescription.free) {
+            place.addEventListener("click", (e) => {
+                selectPlace(place);
+            })
+        }
+
+        place.innerHTML = `<span class="block m-auto">${placeDescription.number}</span>`;
+        return place;
+    }
+    function selectPlace(place) {
+        place.classList.toggle('selected');
+        place.classList.toggle('hover:cursor-not-allowed');
+        place.classList.toggle('hover:cursor-pointer');
+        place.classList.toggle('bg-success-100');
+        place.classList.toggle('bg-secondary-600');
+        localStorage.setItem('reserved_places', selectedPlacesCount());
+        document.querySelector('.nb_places').innerHTML = selectedPlacesCount();
+        document.querySelector('.places_count').innerHTML = selectedPlacesCount();
+        document.querySelector('.amount_to_pay').innerHTML = parseInt(selectedPlacesCount())*6500;
+        if (selectedPlacesCount() > 0) {
+                nextButZone().classList.remove('opacity-25');
+                errors().classList.add("hidden");
+
+            } else {
+                nextButZone().classList.add('opacity-25');
+
+            }
+        // alert(place);
+    }
+</script>

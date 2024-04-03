@@ -1,0 +1,21 @@
+<div class="space-y-5">
+    <div>
+        <h1 to-sail-component="title" type="xl" class="font-bold">Payment</h1>
+        <span class="text-secondary-600 text-xs">fill the phone number to proceed to payment</span>
+    </div>
+    <div class="space-y-2 text-sm finish-box">
+        <span class="block">you need <span class="places_count">0</span> place(s) that coast <span
+                class="amount_to_pay">0</span> XAF</span>
+        <input type="tel" icon="phone" placeholder="enter your phone number" label="enter your phone number"
+            to-sail-component="basic_input_label">
+    </div>
+    <span class=" text-danger-500 text-xs hidden errors">fill the phone number</span>
+
+    <div class="finish-but-zone opacity-25">
+        <button to-sail-component="link" color="secondary" icon="printer">Print the ticket</button>
+    </div>
+</div>
+<script>
+    document.querySelector('.places_count').innerHTML = localStorage.getItem('reserved_places');
+    document.querySelector('.amount_to_pay').innerHTML = parseInt(localStorage.getItem('reserved_places')) * 6500;
+</script>

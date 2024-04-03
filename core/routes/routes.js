@@ -3,9 +3,9 @@ import { url } from "../component_f.js"
 export let routes = [
     {
         name: 'home',
-        path: 'src/test.html',
+        path: 'src/layouts/navigation.html',
         beforeEnter: () => {
-            console.log('df')
+            // console.log('df')
         }
     },
     {

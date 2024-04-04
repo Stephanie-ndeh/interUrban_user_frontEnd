@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/output.css" />
+</head>
+
+<body>
+    <div class="page">
+        <div class="w-screen h-screen flex bg-secondary-300">
+            <!-- ticket -->
+            <div class="m-auto lg:w-3/12 w-10/12 space-y-5">
+                <div class="m-auto space-y-5 bg-white p-5 rounded-lg relative">
+
+                    <div class=" absolute"></div>
+                    <div class="w-[50px] h-[50px] absolute rounded-full left-[-20px] bg-secondary-300 top-[100px]">
+                    </div>
+                    <div class="w-[50px] h-[50px] absolute rounded-full right-[-20px] bg-secondary-300 top-[100px]">
+                    </div>
+                    <div class="flex">
+                        <div class="mr-auto">
+                            <img src="../../../assets/img/ag logo.png" class=" h-min my-auto" width="70" alt="">
+                            <h1 class="font-bold text-xl">Ticket</h1>
+                            <span class="block bg-secondary-300 text-xs px-2 rounded">classic</span>
+                        </div>
+                        <span class="block my-auto text-xl font-bold"><span class="places_count">0</span> PLS</span>
+                    </div>
+                    <div class="flex py-5 border-y-2 border-dashed">
+                        <span class="m-auto text-3xl font-bold"> <span class="price_box">0</span> XAF</span>
+
+                    </div>
+                    <div class="flex">
+                        <!-- left -->
+                        <div class="space-y-2">
+                            <span class="font-semibold bock text-sm">1:40pm</span>
+                            <div class="">
+                                <span class="text-xs">Douala</span>
+                                <span class="block text-secondary-600 text-[10px]">mboppi</span>
+                            </div>
+                        </div>
+                        <!-- middle -->
+                        <div class="flex mx-auto">
+                            <span class="block p-2 rounded-full border m-auto text-xs text-secondary-600">
+                                4h30min
+                            </span>
+                        </div>
+                        <!-- right -->
+                        <div class="space-y-2">
+                            <span class="font-semibold bock text-sm">1:40pm</span>
+                            <div class="">
+                                <span class="text-xs">Douala</span>
+                                <span class="block text-secondary-600 text-[10px]">mboppi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer -->
+                    <div class="py-3 border-t-2 border-dashed flex">
+                        <div class=" ml-auto space-x-2">
+                            <button class="" to-sail-component="badge" type="secondary">BIG</button>
+                            <button class="" to-sail-component="badge" type="secondary">Details</button>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-center text-secondary-600">this is the print of your ticket you can take a screen
+                    capture or print
+                    it as PDF using your navigator options.</p>
+                <div class="flex">
+                    <button to-sail-component="link" class="mx-auto" color="secondary" mode="transp"
+                        href="./index.html">back to reservation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="./core/init.js" type="module"></script>
+<script>
+    document.querySelector('.places_count').innerHTML = localStorage.getItem('reserved_places')
+    document.querySelector('.price_box').innerHTML = parseInt(localStorage.getItem('reserved_places')) * 6500
+</script>
+
+</html>

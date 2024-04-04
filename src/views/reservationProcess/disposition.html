@@ -20,6 +20,9 @@
     function errors() {
         return document.querySelector('.errors')
     }
+    function finishErrors() {
+        return document.querySelector('.finish-errors')
+    }
     function bus() {
         return document.querySelector('.bus_disposition')
     }
@@ -36,18 +39,47 @@
         return document.querySelectorAll('.bus_disposition .selected').length;
     }
     function phoneNumberInput() {
-        return document.querySelectorAll('.finish-box input').length;
+        return document.querySelector('.finish-box input');
     }
 
-    nextButZone().addEventListener("click", (e) => {
+    function phoneNumberInputValue() {
+        return phoneNumberInput().value;
+    }
+    finishButZone().addEventListener("click", (e) => {
+        if (phoneNumberInputValue().length == 9) {
+        } else {
             e.preventDefault()
-            if (selectedPlacesCount() > 0) {
-                document.querySelector('.paymentInfos').classList.toggle('hidden');
-                document.querySelector('.placesCount').classList.toggle('hidden');
 
-            } else {
-                errors().classList.remove("hidden");
-            }
+            finishErrors().classList.remove('hidden');
+        }
+    })
+    phoneNumberInput().addEventListener("keypress", (e) => {
+        if (phoneNumberInputValue().length == 9) {
+            e.preventDefault()
+        }
+        if (!parseInt(e.key)) {
+            e.preventDefault()
+        }
+    })
+    phoneNumberInput().addEventListener("keyup", (e) => {
+        if (phoneNumberInputValue().length == 9) {
+            finishButZone().classList.remove('opacity-25');
+            finishErrors().classList.add('hidden');
+            localStorage.setItem('reserved_phone_number');
+
+        } else {
+            finishButZone().classList.add('opacity-25');
+        }
+    })
+    nextButZone().addEventListener("click", (e) => {
+        e.preventDefault()
+        if (selectedPlacesCount() > 0) {
+            document.querySelector('.paymentInfos').classList.toggle('hidden');
+            document.querySelector('.placesCount').classList.toggle('hidden');
+
+        } else {
+            errors().classList.remove("hidden");
+        }
     })
 
     show_disposition()
@@ -96,15 +128,15 @@
         localStorage.setItem('reserved_places', selectedPlacesCount());
         document.querySelector('.nb_places').innerHTML = selectedPlacesCount();
         document.querySelector('.places_count').innerHTML = selectedPlacesCount();
-        document.querySelector('.amount_to_pay').innerHTML = parseInt(selectedPlacesCount())*6500;
+        document.querySelector('.amount_to_pay').innerHTML = parseInt(selectedPlacesCount()) * 6500;
         if (selectedPlacesCount() > 0) {
-                nextButZone().classList.remove('opacity-25');
-                errors().classList.add("hidden");
+            nextButZone().classList.remove('opacity-25');
+            errors().classList.add("hidden");
 
-            } else {
-                nextButZone().classList.add('opacity-25');
+        } else {
+            nextButZone().classList.add('opacity-25');
 
-            }
+        }
         // alert(place);
     }
 </script>
